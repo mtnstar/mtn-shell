@@ -16,9 +16,10 @@ __mtn_git_branch() {
 }
 BASH
 
-# PS1: M and N yellow, T blue; git branch on separate line above user@host:path
+# PS1: bold MTN — M and N bright yellow, T bold blue; git branch printed immediately after MTN on same line
+# user is shown in bold white, path in bright yellow; no cyan used
 cat >> /etc/bash.bashrc <<'BASH'
-export PS1='\[\e[0;33m\]M\[\e[0;34m\]T\[\e[0;33m\]N\[\e[0m\]\n$(__mtn_git_branch) \[\e[0;36m\]\u:\[\e[0;33m\]\w\[\e[0m\]\$ '
+export PS1='\[\e[1;93m\]M\[\e[1;34m\]T\[\e[1;93m\]N\[\e[0m\]$(__mtn_git_branch) \[\e[1;37m\]\u:\[\e[1;33m\]\w\[\e[0m\]\$ '
 BASH
 
 echo "alias docker='sudo docker'" >> /etc/bash.bashrc

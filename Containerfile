@@ -19,6 +19,7 @@ RUN mkdir /opt/python-venv \
 
 # Configure bash prompt and aliases via script
 RUN /tmp/container-scripts/setup-shell.sh
+ENV PATH="/opt/python-venv/bin:$PATH"
 
 WORKDIR $HOME
 USER mtn-admin

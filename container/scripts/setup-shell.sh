@@ -21,5 +21,3 @@ BASH
 cat >> /etc/bash.bashrc <<'BASH'
 export PS1='\[\e[1;93m\]M\[\e[1;34m\]T\[\e[1;93m\]N\[\e[0m\]$(__mtn_git_branch) \[\e[1;37m\]\u:\[\e[1;33m\]\w\[\e[0m\]\$ '
 BASH
-
-echo "alias podman='sudo podman'" >> /etc/bash.bashrc

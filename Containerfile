@@ -13,7 +13,8 @@ RUN /tmp/container-scripts/install-packages.sh
 # Create user and workspace
 RUN userdel -r ubuntu || true
 RUN useradd -u ${USER_ID} -m -s /bin/bash mtn-admin \
-  && echo "mtn-admin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
+  && echo "mtn-admin ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers \
+  && chown -R mtn-admin:mtn-admin $HOME
 RUN mkdir /opt/python-venv \
   && chown mtn-admin:mtn-admin /opt/python-venv
 

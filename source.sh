@@ -7,7 +7,7 @@ mtn() {
     --pull always \
     --privileged \
     -v ~/.mtn:/home/mtn-admin \
+    --tmpfs /run --tmpfs /tmp \
     --userns=keep-id:uid=$(id -u),gid=$(id -g) \
-    -v /var/run/docker.sock:/var/run/docker.sock \
     ghcr.io/mtnstar/mtn-shell:latest bash
 }

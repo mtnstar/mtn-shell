@@ -19,5 +19,5 @@ BASH
 # PS1: bold MTN — M and N bright yellow, T bold blue; git branch printed immediately after MTN on same line
 # user is shown in bold white, path in bright yellow; no cyan used
 cat >> /etc/bash.bashrc <<'BASH'
-export PS1='\[\e[1;93m\]M\[\e[1;34m\]T\[\e[1;93m\]N\[\e[0m\]$(__mtn_git_branch) \[\e[1;37m\]\u:\[\e[1;33m\]\w\[\e[0m\]\$ '
+export PS1='\[\e[1;93m\]M\[\e[1;34m\]T\[\e[1;93m\]N\[\e[0m\]$(__mtn_git_branch) \e[1;34m\]\w\[\e[0m\]\$ '
 BASH

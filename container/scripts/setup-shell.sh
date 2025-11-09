@@ -11,7 +11,7 @@ __mtn_git_branch() {
   git rev-parse --is-inside-work-tree >/dev/null 2>&1 || return
   branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
   if [ -n "$branch" ]; then
-    printf " \[\e[0;35m\](%s)\[\e[0m\]" "$branch"
+    printf " \e[0;35m(%s)\e[0m" "$branch"
   fi
 }
 BASH

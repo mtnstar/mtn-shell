@@ -18,8 +18,8 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   lsb-release \
   python3 python3-pip python3-venv build-essential
 
-# NodeJS 20
-curl -fsSL https://deb.nodesource.com/setup_20.x | bash -
+# NodeJS 22
+curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
 apt-get install -y --no-install-recommends nodejs
 
 # npm global tools

@@ -26,11 +26,7 @@ apt-get install -y --no-install-recommends nodejs
 npm install -g prettier
 
 # Install Bitwarden CLI
-RUN curl -L https://vault.bitwarden.com/download/? app=cli&platform=linux -o bw. zip \
-  && unzip bw.zip \
-  && chmod +x bw \
-  && mv bw /usr/local/bin/ \
-  && rm bw. zip
+npm install -g @bitwarden/cli
 
 # cleanup to reduce image size
 apt-get clean

@@ -25,5 +25,4 @@ BASH
 # Start ssh-agent
 cat >> /etc/bash.bashrc <<'BASH'
 eval $(ssh-agent -s) > /dev/null
-echo "🔐 SSH Agent started (PID $SSH_AGENT_PID)"
 BASH

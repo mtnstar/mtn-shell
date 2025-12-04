@@ -24,6 +24,9 @@ ENV PATH="/opt/python-venv/bin:$PATH"
 # we're using hosts podman, so redirect the socket
 ENV CONTAINER_HOST=unix:///var/run/user/1000/podman/podman.sock
 
+COPY ./container/scripts/bin /opt/mtn-shell/bin
+ENV PATH="/opt/mtn-shell/bin:$PATH"
+
 WORKDIR $HOME
 USER mtn-admin
 

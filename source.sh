@@ -19,6 +19,7 @@ mtn() {
     -v /var/run/user/$(id -u)/podman/podman.sock:/var/run/user/1000/podman/podman.sock \
     -v ~/.mtn:/home/mtn-admin \
     --cap-add=NET_RAW \
+    --network=host \
     --tmpfs /tmp \
     --userns=keep-id:uid=$(id -u),gid=$(id -g) \
     ghcr.io/mtnstar/mtn-shell:latest bash

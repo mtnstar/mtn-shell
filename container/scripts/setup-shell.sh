@@ -22,6 +22,10 @@ cat >> /etc/bash.bashrc <<'BASH'
 export PS1='\[\e[1;93m\]M\[\e[1;34m\]T\[\e[1;93m\]N\[\e[0m\]$(__mtn_git_branch) \e[1;34m\]\w\[\e[0m\]\$ '
 BASH
 
+cat >> /etc/bash.bashrc <<'BASH'
+source /opt/mtn-shell/bin/findup.sh
+BASH
+
 # Start ssh-agent
 cat >> /etc/bash.bashrc <<'BASH'
 eval $(ssh-agent -s) > /dev/null

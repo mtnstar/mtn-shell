@@ -26,6 +26,7 @@ ENV CONTAINER_HOST=unix:///var/run/user/1000/podman/podman.sock
 
 COPY ./container/scripts/bin /opt/mtn-shell/bin
 ENV PATH="/opt/mtn-shell/bin:$PATH"
+ENV ANSIBLE_VAULT_PASSWORD_FILE="$HOME/.ansible_vault_pass.txt"
 
 WORKDIR $HOME
 USER mtn-admin

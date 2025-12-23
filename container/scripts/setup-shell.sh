@@ -24,6 +24,7 @@ BASH
 
 cat >> /etc/bash.bashrc <<'BASH'
 source /opt/mtn-shell/bin/findup.sh
+source /opt/mtn-shell/bin/ssh.sh
 BASH
 
 # Start ssh-agent

@@ -19,3 +19,9 @@ shell in a container with tools for managing our infrastructure:
 `source <(curl -s https://raw.githubusercontent.com/mtnstar/mtn-shell/refs/heads/main/source.sh)`
 
 provides the `mtn` command. You might want to add it to your `.bashrc`.
+
+## Tools
+
+### Helper Commands
+
+**go**: does `ssh` and `sudo su -` in one single command, usage: `go my-server`

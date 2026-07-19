@@ -28,10 +28,11 @@ The container ships with WireGuard (`wg` / `wg-quick`, userspace backend via
   `sudo wg-quick down ~/.vpn/infra.conf`
 
 Because a rootless container cannot configure the host's network namespace, the
-container runs in its own network namespace (`slirp4netns`) rather than with
-host networking — this is what makes WireGuard possible. Host services are
-reachable at `10.0.2.2` instead of `localhost`. The host must expose
-`/dev/net/tun` (present on any host with the `tun` module loaded).
+container runs in its own network namespace (`pasta`) rather than with host
+networking — this is what makes WireGuard possible. Host services are reachable
+via `host.containers.internal` instead of `localhost` (pasta is started with
+`--map-gw`). The host must expose `/dev/net/tun` (present on any host with the
+`tun` module loaded).
 
 ### Bitwarden Cli
 

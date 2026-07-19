@@ -37,7 +37,7 @@ mtn() {
     --cap-add=NET_RAW \
     --cap-add=NET_ADMIN \
     --device=/dev/net/tun \
-    --network=slirp4netns:allow_host_loopback=true \
+    --network=pasta:--map-gw \
     --tmpfs /tmp \
     --userns=keep-id:uid=$(id -u),gid=$(id -g) \
     ghcr.io/mtnsoft/mtn-shell:latest bash --login

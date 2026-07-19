@@ -11,6 +11,7 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   gnupg \
   git git-lfs \
   dnsutils mtr iputils-ping ncat \
+  wireguard-tools wireguard-go iproute2 iptables \
   podman podman-compose slirp4netns fuse-overlayfs uidmap \
   shellcheck shfmt \
   qrencode \
@@ -22,6 +23,10 @@ DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
   sudo \
   lsb-release \
   python3 python3-pip python3-venv build-essential
+
+# Install a minimal `resolvconf` so wg-quick can apply a config's `DNS =` line
+# despite podman bind-mounting /etc/resolv.conf (see the script for details).
+install -m 0755 /tmp/container-scripts/resolvconf-shim.sh /usr/local/bin/resolvconf
 
 # NodeJS 24
 curl -fsSL https://deb.nodesource.com/setup_24.x | bash -

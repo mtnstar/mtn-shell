@@ -35,7 +35,9 @@ mtn() {
     -v ~/.config/nvim:/home/mtn-admin/.config/nvim \
     -v ~/nextcloud/titan/config/ansible_inventories/production:/home/mtn-admin/git/infra/inventories/production \
     --cap-add=NET_RAW \
-    --network=host \
+    --cap-add=NET_ADMIN \
+    --device=/dev/net/tun \
+    --network=slirp4netns:allow_host_loopback=true \
     --tmpfs /tmp \
     --userns=keep-id:uid=$(id -u),gid=$(id -g) \
     ghcr.io/mtnsoft/mtn-shell:latest bash --login

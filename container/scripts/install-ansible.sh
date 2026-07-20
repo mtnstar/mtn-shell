@@ -2,11 +2,11 @@
 set -euo pipefail
 
 python3 -m venv /opt/python-venv
-pip install --no-cache-dir --upgrade pip==26.0.1 \
-  molecule==26.3.0 \
-  ansible==13.4.0 \
-  kubernetes==35.0.0 \
+pip install --no-cache-dir --upgrade pip==26.1.2 \
+  molecule==26.6.0 \
+  ansible==14.2.0 \
+  kubernetes==36.0.3 \
   pytest \
   testinfra \
   yamllint \
-  "molecule-plugins[podman]==25.8.12"
+  "molecule-plugins[podman]==26.7.15"

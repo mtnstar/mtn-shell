@@ -33,7 +33,8 @@ mtn() {
     -v ~/.mtn:/home/mtn-admin \
     -v /dev/bus/usb:/dev/bus/usb \
     -v ~/.config/nvim:/home/mtn-admin/.config/nvim \
-    -v ~/nextcloud/titan/config/ansible_inventories/production:/home/mtn-admin/git/infra/inventories/production \
+    -v ~/nextcloud/titan/config/ansible_inventories/production:/home/mtn-admin/git/mtn/infra/inventories/production \
+    -v ~/git:/home/mtn-admin/git \
     --cap-add=NET_RAW \
     --cap-add=NET_ADMIN \
     --device=/dev/net/tun \

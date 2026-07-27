@@ -36,9 +36,7 @@ mtn() {
     -v ~/nextcloud/titan/config/ansible_inventories/production:/home/mtn-admin/git/mtn/infra/inventories/production \
     -v ~/git:/home/mtn-admin/git \
     --cap-add=NET_RAW \
-    --cap-add=NET_ADMIN \
-    --device=/dev/net/tun \
-    --network=pasta:--map-gw \
+    --network=host \
     --tmpfs /tmp \
     --userns=keep-id:uid=$(id -u),gid=$(id -g) \
     ghcr.io/mtnsoft/mtn-shell:latest bash --login

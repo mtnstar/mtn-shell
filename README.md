@@ -15,25 +15,6 @@ shell in a container with tools for managing our infrastructure:
 
 - copy things like required ssh keys, configs and other stuff you want to use in the container to `~/.mtn`
 
-### WireGuard VPN
-
-The container ships with WireGuard (`wg` / `wg-quick`, userspace backend via
-`wireguard-go`, so no host kernel module is required). If a config exists at
-`~/.vpn/infra.conf` it is brought up automatically on shell start:
-
-- put the config on the host at `~/.mtn/.vpn/infra.conf` (mounted to
-  `~/.vpn/infra.conf` in the container)
-- it connects on the first shell; further shells are a no-op while it is up
-- manage it manually with `sudo wg-quick up ~/.vpn/infra.conf` /
-  `sudo wg-quick down ~/.vpn/infra.conf`
-
-Because a rootless container cannot configure the host's network namespace, the
-container runs in its own network namespace (`pasta`) rather than with host
-networking — this is what makes WireGuard possible. Host services are reachable
-via `host.containers.internal` instead of `localhost` (pasta is started with
-`--map-gw`). The host must expose `/dev/net/tun` (present on any host with the
-`tun` module loaded).
-
 ### Bitwarden Cli
 
 create ~./mtn-env with the following content:

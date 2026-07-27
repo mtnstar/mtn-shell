@@ -42,17 +42,3 @@ BASH
 cat >> /etc/bash.bashrc <<'BASH'
 eval $(ssh-agent -s) > /dev/null
 BASH
-
-# Auto-connect the infra WireGuard VPN when its config is present.
-# Runs on shell start; the `ip link` guard makes it a no-op once the tunnel
-# is up, so opening more shells doesn't try to reconnect.
-cat >> /etc/bash.bashrc <<'BASH'
-__mtn_wg_up() {
-  local conf="$HOME/.vpn/infra.conf"
-  [ -r "$conf" ] || return 0
-  ip link show infra >/dev/null 2>&1 && return 0
-  echo "Connecting WireGuard VPN (infra)…"
-  sudo wg-quick up "$conf" || echo "WireGuard VPN: failed to bring up infra" >&2
-}
-__mtn_wg_up
-BASH

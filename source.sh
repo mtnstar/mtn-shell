@@ -1,13 +1,20 @@
-# To use: source mtn.sh in your shell, then run: mtn
+if [ -n "${BASH_SOURCE[0]:-}" ]; then
+  MTN_SHELL_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
 
 mtn() {
   local pull_flag=""
+  local update_flag=""
   local podman_args=()
 
   while [ $# -gt 0 ]; do
     case "$1" in
     --pull | --pull=*)
       pull_flag="--pull=always"
+      shift
+      ;;
+    --update)
+      update_flag="1"
       shift
       ;;
     --)
@@ -24,6 +31,18 @@ mtn() {
       ;;
     esac
   done
+
+  if [ -n "$update_flag" ]; then
+    if [ -d "${MTN_SHELL_DIR:-}/.git" ]; then
+      git -C "$MTN_SHELL_DIR" pull --ff-only || return 1
+      # shellcheck source=/dev/null
+      . "$MTN_SHELL_DIR/source.sh"
+      echo "mtn-shell updated, run 'mtn' to start the container"
+      return 0
+    fi
+    echo "mtn: cannot update, '${MTN_SHELL_DIR:-unknown}' is not a git checkout" >&2
+    return 1
+  fi
 
   mkdir -p ~/.mtn
   systemctl --user start podman.socket
